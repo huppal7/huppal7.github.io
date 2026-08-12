@@ -133,8 +133,7 @@
 
   /* ---------- PHOTOS ---------- */
   .photo-frame{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);}
-  .photo-frame img{display:block;width:100%;height:auto;filter:grayscale(1) contrast(1.04) brightness(.97);transition:filter .7s ease;}
-  .photo-frame:hover img{filter:grayscale(0) contrast(1) brightness(1);}
+  .photo-frame img{display:block;width:100%;height:auto;filter:saturate(1.02) contrast(1.01);}
   .photo-cap{
     font-family:'IBM Plex Mono', monospace;font-size:10.5px;letter-spacing:.05em;color:var(--muted);
     padding:11px 14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
@@ -326,7 +325,7 @@
       <div class="block-head"><span class="block-num">02</span><h2 class="block-title">Experience</h2></div>
 
       <figure class="photo-frame exp-figure">
-        <img src="images/adobe-desk.jpg" width="1400" height="1050" alt="Hardik at his desk at the Adobe office in San Jose" loading="lazy">
+        <img src="images/adobe-desk.jpg" width="1050" height="1400" alt="Hardik at his desk at the Adobe office in San Jose" loading="lazy">
         <figcaption class="photo-cap"><span>At the Adobe office — on the AEM Cloud Service platform</span><span>San Jose · 2026</span></figcaption>
       </figure>
 
