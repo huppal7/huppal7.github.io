@@ -5,6 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hardik Uppal — Software Engineer</title>
 <meta name="description" content="Hardik Uppal — CS @ Georgia Tech, SWE Intern @ Adobe, prev. Delta Air Lines. Backend & full-stack engineer.">
+<link rel="canonical" href="https://huppal7.github.io/">
+<meta name="author" content="Hardik Uppal">
+<meta name="theme-color" content="#0a0a0b">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://huppal7.github.io/">
+<meta property="og:title" content="Hardik Uppal — Software Engineer">
+<meta property="og:description" content="CS @ Georgia Tech, graduating Dec 2026. SWE Intern @ Adobe, prev. Delta Air Lines. Backend & full-stack engineer, open to roles in 2027.">
+<meta property="og:image" content="https://huppal7.github.io/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hardik Uppal — Software Engineer">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hardik Uppal — Software Engineer">
+<meta name="twitter:description" content="CS @ Georgia Tech, graduating Dec 2026. SWE Intern @ Adobe, prev. Delta Air Lines.">
+<meta name="twitter:image" content="https://huppal7.github.io/images/og.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Hardik Uppal",
+  "url": "https://huppal7.github.io/",
+  "image": "https://huppal7.github.io/images/portrait.jpg",
+  "jobTitle": "Software Engineer",
+  "worksFor": { "@type": "Organization", "name": "Adobe" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Georgia Institute of Technology" },
+  "email": "mailto:hardikuppal0@gmail.com",
+  "sameAs": [
+    "https://github.com/huppal7",
+    "https://www.linkedin.com/in/hardik-uppal/"
+  ],
+  "knowsAbout": ["Backend Engineering", "Full-Stack Development", "Cloud", "AI/ML", "APIs"]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -19,8 +58,8 @@
     --panel-2:#1a1a1d;
     --line:#232327;
     --paper:#f2f2f0;
-    --paper-dim:#b2b2b0;
-    --muted:#6d6d70;
+    --paper-dim:#b8b8b6;
+    --muted:#86868b;
     --accent:#f2f2f0;
     --accent-soft:rgba(242,242,240,.18);
     --status:#5fbf8a;
@@ -33,8 +72,8 @@
     --panel-2:#e3dfd5;
     --line:#dad6cc;
     --paper:#1a1815;
-    --paper-dim:#524f48;
-    --muted:#8a867c;
+    --paper-dim:#4a463f;
+    --muted:#6f6b62;
     --accent:#1a1815;
     --accent-soft:rgba(26,24,21,.16);
     --status:#3f9e6d;
@@ -265,6 +304,53 @@
 
   .colophon{margin-top:40px;font-family:'IBM Plex Mono', monospace;font-size:11px;letter-spacing:.03em;color:var(--muted);}
 
+  /* ---------- SKIP LINK ---------- */
+  .skip{position:absolute;left:-9999px;top:12px;z-index:1001;background:var(--panel);color:var(--paper);
+    border:1px solid var(--line);border-radius:var(--radius);padding:10px 16px;font-family:'IBM Plex Mono',monospace;font-size:13px;}
+  .skip:focus{left:16px;}
+
+  /* ---------- COMMAND PALETTE ---------- */
+  .cmdk-hint{
+    margin-top:26px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    font-family:'IBM Plex Mono', monospace;font-size:11px;letter-spacing:.06em;color:var(--muted);
+    background:none;border:none;padding:0;transition:color .2s ease;
+  }
+  .cmdk-hint:hover{color:var(--paper);}
+  .cmdk-hint kbd{
+    font-family:'IBM Plex Mono', monospace;border:1px solid var(--line);border-radius:4px;
+    padding:2px 6px;font-size:10px;color:var(--paper-dim);background:var(--panel);
+  }
+  @media (max-width:1023px){.cmdk-hint{display:none;}}
+
+  .cmdk-overlay{
+    position:fixed;inset:0;z-index:1000;display:none;align-items:flex-start;justify-content:center;
+    background:rgba(0,0,0,.55);backdrop-filter:blur(3px);padding:14vh 20px 20px;
+  }
+  .cmdk-overlay.open{display:flex;}
+  .cmdk{
+    width:min(94vw,540px);background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,.5);animation:cmdk-in .16s ease;
+  }
+  @keyframes cmdk-in{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:none;}}
+  .cmdk-input{
+    width:100%;border:none;background:transparent;color:var(--paper);
+    font-family:'IBM Plex Mono', monospace;font-size:15px;padding:18px 20px;outline:none;
+    border-bottom:1px solid var(--line);
+  }
+  .cmdk-input::placeholder{color:var(--muted);}
+  .cmdk-list{max-height:44vh;overflow-y:auto;padding:8px;}
+  .cmdk-group{font-family:'IBM Plex Mono', monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);padding:12px 12px 6px;}
+  .cmdk-item{
+    display:flex;align-items:center;gap:13px;padding:11px 13px;border-radius:8px;cursor:pointer;
+    font-family:'IBM Plex Mono', monospace;font-size:13px;letter-spacing:.02em;color:var(--paper-dim);
+  }
+  .cmdk-item[aria-selected="true"]{background:var(--panel-2);color:var(--paper);}
+  .cmdk-item svg{width:15px;height:15px;color:var(--muted);flex-shrink:0;}
+  .cmdk-item[aria-selected="true"] svg{color:var(--paper);}
+  .cmdk-item .k{margin-left:auto;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+  .cmdk-empty{padding:22px;text-align:center;color:var(--muted);font-family:'IBM Plex Mono', monospace;font-size:13px;}
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
     .reveal{opacity:1;transform:none;}
@@ -272,6 +358,8 @@
 </style>
 </head>
 <body>
+
+<a class="skip" href="#about">Skip to content</a>
 
 <div class="shell">
 
@@ -291,6 +379,9 @@
         <a href="#skills" data-nav="skills"><span class="line"></span>Skills</a>
         <a href="#contact" data-nav="contact"><span class="line"></span>Contact</a>
       </nav>
+      <button class="cmdk-hint" id="cmdkHint" type="button" aria-label="Open command menu">
+        <kbd>⌘K</kbd> jump anywhere
+      </button>
     </div>
 
     <div class="side-bottom">
@@ -560,18 +651,96 @@
   </main>
 </div>
 
+<div class="cmdk-overlay" id="cmdk" role="dialog" aria-modal="true" aria-label="Command menu">
+  <div class="cmdk">
+    <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Jump to a section or action…" autocomplete="off" spellcheck="false" aria-label="Search commands">
+    <div class="cmdk-list" id="cmdkList" role="listbox"></div>
+  </div>
+</div>
+
 <script>
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const setTheme = (t) => {
+    document.documentElement.setAttribute('data-theme', t);
+    try { localStorage.setItem('theme', t); } catch (e) {}
+  };
+  const toggleTheme = () => setTheme(
+    document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light'
+  );
+
   // Light / dark theme toggle (persisted).
   const themeToggle = document.getElementById('themeToggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
+  if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+
+  // ---------- Command palette (⌘K / Ctrl+K) ----------
+  (function(){
+    const overlay = document.getElementById('cmdk');
+    const input = document.getElementById('cmdkInput');
+    const list = document.getElementById('cmdkList');
+    const hint = document.getElementById('cmdkHint');
+    if (!overlay || !input || !list) return;
+
+    const go = (id) => () => { location.hash = id; document.getElementById(id.slice(1))?.scrollIntoView({behavior:'smooth'}); };
+    const open = (url) => () => window.open(url, '_blank', 'noopener');
+    const ico = (p) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${p}</svg>`;
+    const arrow = ico('<path d="M7 17 17 7M9 7h8v8"/>');
+    const sec = ico('<path d="M4 6h16M4 12h16M4 18h10"/>');
+
+    const commands = [
+      {g:'Sections', label:'About',      run:go('#about'),      kw:'about bio'},
+      {g:'Sections', label:'Experience', run:go('#experience'), kw:'experience work adobe delta jobs'},
+      {g:'Sections', label:'Work',       run:go('#work'),       kw:'work projects applicationhq'},
+      {g:'Sections', label:'Skills',     run:go('#skills'),     kw:'skills tech stack languages'},
+      {g:'Sections', label:'Education',  run:go('#education'),  kw:'education georgia tech gpa'},
+      {g:'Sections', label:'Contact',    run:go('#contact'),    kw:'contact email hire reach'},
+      {g:'Links', label:'GitHub',   hint:'github.com/huppal7', run:open('https://github.com/huppal7'), kw:'github code repos', icon:arrow},
+      {g:'Links', label:'LinkedIn', hint:'in/hardik-uppal',    run:open('https://www.linkedin.com/in/hardik-uppal/'), kw:'linkedin', icon:arrow},
+      {g:'Links', label:'Email',    hint:'hardikuppal0@gmail.com', run:()=>{location.href='mailto:hardikuppal0@gmail.com';}, kw:'email mail contact', icon:arrow},
+      {g:'Links', label:'Résumé',   hint:'download PDF', run:open('Hardik_Uppal_Resume.pdf'), kw:'resume cv pdf', icon:arrow},
+      {g:'Actions', label:'Toggle light / dark theme', run:toggleTheme, kw:'theme dark light mode toggle', icon:ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2"/>')},
+    ];
+
+    let filtered = commands.slice(), sel = 0;
+
+    function render(){
+      let html = '', lastG = '';
+      filtered.forEach((c, i) => {
+        if (c.g !== lastG){ html += `<div class="cmdk-group">${c.g}</div>`; lastG = c.g; }
+        html += `<div class="cmdk-item" role="option" data-i="${i}" aria-selected="${i===sel}">
+          ${c.icon || sec}<span>${c.label}</span>${c.hint?`<span class="k">${c.hint}</span>`:''}</div>`;
+      });
+      list.innerHTML = html || '<div class="cmdk-empty">No matches</div>';
+    }
+    function filter(q){
+      q = q.trim().toLowerCase();
+      filtered = q ? commands.filter(c => (c.label+' '+c.kw).toLowerCase().includes(q)) : commands.slice();
+      sel = 0; render();
+    }
+    function openPalette(){ overlay.classList.add('open'); input.value=''; filter(''); input.focus(); }
+    function closePalette(){ overlay.classList.remove('open'); }
+    function run(i){ const c = filtered[i]; if(!c) return; closePalette(); c.run(); }
+
+    if (hint) hint.addEventListener('click', openPalette);
+    input.addEventListener('input', () => filter(input.value));
+    list.addEventListener('click', (e) => {
+      const el = e.target.closest('.cmdk-item'); if (el) run(+el.dataset.i);
     });
-  }
+    list.addEventListener('mousemove', (e) => {
+      const el = e.target.closest('.cmdk-item'); if (el && +el.dataset.i !== sel){ sel = +el.dataset.i; render(); }
+    });
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closePalette(); });
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){ e.preventDefault(); overlay.classList.contains('open') ? closePalette() : openPalette(); return; }
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape'){ closePalette(); }
+      else if (e.key === 'ArrowDown'){ e.preventDefault(); sel = Math.min(sel+1, filtered.length-1); render(); scrollSel(); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); sel = Math.max(sel-1, 0); render(); scrollSel(); }
+      else if (e.key === 'Enter'){ e.preventDefault(); run(sel); }
+    });
+    function scrollSel(){ list.querySelector('[aria-selected="true"]')?.scrollIntoView({block:'nearest'}); }
+  })();
 
   // Active nav link based on the section in view.
   const navLinks = document.querySelectorAll('.side-nav a');
