@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0b'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-style='italic' fill='%23f2f2f0' text-anchor='middle'%3EU%3C/text%3E%3C/svg%3E">
+<script>
+  (function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <style>
   :root{
     --ink:#0a0a0b;
@@ -24,6 +27,19 @@
     --radius:2px;
   }
 
+  html[data-theme="light"]{
+    --ink:#f4f2ec;
+    --panel:#eae7df;
+    --panel-2:#e3dfd5;
+    --line:#dad6cc;
+    --paper:#1a1815;
+    --paper-dim:#524f48;
+    --muted:#8a867c;
+    --accent:#1a1815;
+    --accent-soft:rgba(26,24,21,.16);
+    --status:#3f9e6d;
+  }
+
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
 
@@ -34,6 +50,7 @@
     font-size:18px;line-height:1.65;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    transition:background .35s ease, color .35s ease;
   }
   body::after{
     content:'';position:fixed;inset:0;z-index:998;pointer-events:none;
@@ -100,6 +117,17 @@
   }
   .avail .dot{width:7px;height:7px;border-radius:50%;background:var(--status);animation:pulse 2.4s infinite;}
   @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+
+  .theme-toggle{
+    width:34px;height:34px;flex-shrink:0;
+    display:inline-flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);border-radius:var(--radius);background:transparent;
+    color:var(--muted);cursor:pointer;transition:color .2s ease, border-color .2s ease;
+  }
+  .theme-toggle:hover{color:var(--paper);border-color:var(--muted);}
+  .theme-toggle svg{width:16px;height:16px;}
+  html[data-theme="light"] .theme-toggle .icon-sun{display:none;}
+  html[data-theme="dark"] .theme-toggle .icon-moon{display:none;}
 
   /* ---------- RIGHT (scrolling content) ---------- */
   .content{padding:20px 0 80px;}
@@ -253,8 +281,8 @@
       <div class="side-title">Software Engineer</div>
       <div class="side-tagline">CS @ Georgia Tech · SWE Intern @ Adobe</div>
       <p class="side-intro">
-        I build backend systems, full-stack products, and AI-powered tools —
-        software that has to <em>hold up under real constraints</em>.
+        I mostly work on backend and full-stack, with a fair bit of AI lately.
+        Currently interning at Adobe; before that, two co-ops at Delta.
       </p>
       <nav class="side-nav" aria-label="Section navigation">
         <a href="#about" data-nav="about"><span class="line"></span>About</a>
@@ -279,6 +307,10 @@
         <a href="Hardik_Uppal_Resume.pdf" target="_blank" rel="noopener" aria-label="Résumé">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>
         </a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light or dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M3.5 3.5l2 2M18.5 18.5l2 2M1.5 12h3M19.5 12h3M3.5 20.5l2-2M18.5 5.5l2-2"/></svg>
+        </button>
       </div>
       <div class="avail"><span class="dot"></span>Open to SWE roles · 2027</div>
     </div>
@@ -295,22 +327,23 @@
       </div>
       <div class="about-body">
         <p>
-          I'm a Computer Science student at Georgia Tech, graduating with highest
-          honors in December 2026. I like building software that <em>solves a real
-          problem</em> — right now that means interning at Adobe on the AEM Cloud
-          Service platform, after two rotations as a software engineering co-op at
-          Delta Air Lines working on crew systems.
+          I'm a CS student at Georgia Tech, graduating this December. Most of my
+          work is backend and full-stack, and lately I've been doing a lot with AI.
+          Right now I'm interning at Adobe on the AEM Cloud Service platform, and
+          before that I spent two co-op rotations at Delta Air Lines building
+          software for their crew and flight-ops teams.
         </p>
         <p>
-          Outside of internships I build my own things: <a href="#work">ApplicationHQ</a>,
-          a full-stack job tracker I architected and deployed on AWS end to end;
-          computer vision work with Georgia Tech's Electronic ARTrium research team;
-          and a handful of earlier projects across mobile, databases, and the web.
+          I also build my own stuff on the side. The main one is
+          <a href="#work">ApplicationHQ</a>, a job tracker I put together with
+          Next.js and Spring Boot and deployed on AWS. Before that there was some
+          computer vision research at Georgia Tech and a bunch of smaller projects
+          across mobile, databases, and the web.
         </p>
         <p>
-          When I'm not writing code, I'm usually at the gym, playing basketball, or
-          exploring somewhere new — Atlanta because of Georgia Tech, and the Bay Area
-          because of Adobe.
+          When I'm not coding I'm usually at the gym, playing basketball, or
+          traveling somewhere new. I've spent most of the last few years between
+          Atlanta and the Bay Area.
         </p>
       </div>
       <div class="about-facts">
@@ -476,7 +509,7 @@
           <div class="edu-school">Georgia Institute of Technology</div>
           <div class="edu-when">Aug 2023 — Dec 2026</div>
         </div>
-        <div class="edu-degree">B.S. Computer Science, Highest Honors · GPA 3.65 / 4.0 — <em>Information Internetworks &amp; AI</em></div>
+        <div class="edu-degree">B.S. Computer Science, Highest Honors · GPA 3.65 / 4.0 — concentrations in Information Internetworks &amp; AI</div>
         <div class="edu-course-label">Relevant coursework</div>
         <div class="chip-row">
           <span class="chip">Data Structures &amp; Algorithms</span><span class="chip">Design &amp; Analysis of Algorithms</span>
@@ -503,9 +536,9 @@
     <section id="contact" class="block reveal">
       <div class="block-head"><span class="block-num">06</span><h2 class="block-title">Get in touch</h2></div>
       <p class="contact-lede">
-        Graduating from Georgia Tech in December 2026 and <em>open to full-time
-        software engineering roles</em> starting January 2027. Always happy to talk
-        backend, full-stack, or AI-focused engineering.
+        I'm graduating this December and looking for full-time software engineering
+        roles starting in 2027. If you're hiring — or just want to talk backend,
+        full-stack, or AI — feel free to reach out.
       </p>
       <div class="contact-list">
         <a class="contact-row" href="mailto:hardikuppal0@gmail.com">
@@ -529,6 +562,16 @@
 
 <script>
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Light / dark theme toggle (persisted).
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  }
 
   // Active nav link based on the section in view.
   const navLinks = document.querySelectorAll('.side-nav a');
